@@ -1,1 +1,1 @@
-#Simple template
+Weather app
