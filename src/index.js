@@ -1,6 +1,6 @@
 import './style.css';
 import retrieveWeather from './retrieveData';
 
-console.log('hello world');
+const data = retrieveWeather('Mexico City');
 
-console.log(retrieveWeather());
+console.log(data);

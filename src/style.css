@@ -1,3 +1,14 @@
 html {
   background-color: rgb(37, 37, 37);
 }
+
+body > div {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+}
+
+body > div > input {
+  grid-column: 2/3;
+}

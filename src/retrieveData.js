@@ -1,16 +1,17 @@
 async function retrieveWeather(location) {
-  let defaultLocation = location;
-  if (!defaultLocation) {
+  let defaultLocation;
+  if (!location) {
     defaultLocation = 'auto:ip';
+  } else {
+    defaultLocation = location;
   }
+
   try {
     const response = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=0b5762764c564390961153629241305&q=${defaultLocation}`
     );
     const responseData = await response.json();
-
-    const processedData = processData(responseData);
-    return processedData;
+    return processData(responseData);
   } catch (error) {
     alert("Couldn't get data on that location");
   }
