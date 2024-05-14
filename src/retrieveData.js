@@ -3,14 +3,17 @@ async function retrieveWeather(location) {
   if (!defaultLocation) {
     defaultLocation = 'auto:ip';
   }
+  try {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=0b5762764c564390961153629241305&q=${defaultLocation}`
+    );
+    const responseData = await response.json();
 
-  const response = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=0b5762764c564390961153629241305&q=${defaultLocation}`
-  );
-  const responseData = await response.json();
-
-  const weatherObj = processData(responseData);
-  return weatherObj;
+    const processedData = processData(responseData);
+    return processedData;
+  } catch (error) {
+    alert("Couldn't get data on that location");
+  }
 }
 
 function processData(responseData) {
