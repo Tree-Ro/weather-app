@@ -8,12 +8,13 @@ async function retrieveWeather(location) {
 
   try {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/current.json?key=0b5762764c564390961153629241305&q=${defaultLocation}`
+      `https://api.weatherapi.com/v1/current.json?key=0b5762764c564390961153629241305&q=${defaultLocation}`,
+      { mode: 'cors' }
     );
     const responseData = await response.json();
     return processData(responseData);
   } catch (error) {
-    alert("Couldn't get data on that location");
+    console.error("Couldn't get data on that location: ", error);
   }
 }
 
@@ -27,7 +28,7 @@ function processData(responseData) {
     location: {
       country: responseData.location.country,
       place: responseData.location.name,
-      localtime_epoch: responseData.location.localtime_epoch,
+      last_updated: responseData.current.last_updated,
     },
   };
 
